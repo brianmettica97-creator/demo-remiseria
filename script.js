@@ -13,6 +13,136 @@ const WHATSAPP_NUMBER = "5491112345678";
    CARRUSEL
 ========================= */
 
+const empresas = [
+    {
+        nombre: "Adidas",
+        logo: "img/logos/adidas.png"
+    },
+    {
+        nombre: "Scania",
+        logo: "img/logos/scania.png"
+    },
+    {
+        nombre: "CCU",
+        logo: "img/logos/ccu.png"
+    },
+    {
+        nombre: "Aguas de Origen",
+        logo: "img/logos/ado.png"
+    },
+    {
+        nombre: "Finning",
+        logo: "img/logos/finning.jpg"
+    },
+    {
+        nombre: "Mercomax",
+        logo: "img/logos/mercomax.jpg"
+    },
+    {
+        nombre: "Addnice",
+        logo: "img/logos/addnice.png"
+    },
+    {
+        nombre: "Chamical",
+        logo: "img/logos/chamical.jpg"
+    },
+    {
+        nombre: "Aluar",
+        logo: "img/logos/aluar.png"
+    },
+    {
+        nombre: "Andina Empaques",
+        logo: "img/logos/andina.jpg"
+    },
+    {
+        nombre: "Sarthou (Toyota)",
+        logo: "img/logos/sarthou.png"
+    },
+    {
+        nombre: "Arimex (GAMA)",
+        logo: "img/logos/arimex.png"
+    },
+    {
+        nombre: "Farmacia Zinga",
+        logo: "img/logos/zinga.png"
+    },
+    {
+        nombre: "OSECAC",
+        logo: "img/logos/osecac.jpg"
+    },
+    {
+        nombre: "AkzoNobel S.A.",
+        logo: "img/logos/akzonobel.png"
+    },
+    {
+        nombre: "OEI",
+        logo: "img/logos/oei.png"
+    },
+    {
+        nombre: "American Jet",
+        logo: "img/logos/amjet.png"
+    },
+    {
+        nombre: "Royal Class",
+        logo: "img/logos/royal.jpg"
+    },
+    {
+        nombre: "Molinos Agro",
+        logo: "img/logos/molinos.png"
+    },
+    {
+        nombre: "Medicina Reumatológica",
+        logo: "img/logos/medicinareuma.jpg"
+    },
+    {
+        nombre: "Guardería Neptuno",
+        logo: "img/logos/neptuno.png"
+    },
+    {
+        nombre: "Guardería Sarthou",
+        logo: "img/logos/gsarthou.jpg"
+    },
+    {
+        nombre: "INFA",
+        logo: "img/logos/infa.png"
+    },
+    {
+        nombre: "Tecsan",
+        logo: "img/logos/tecsan.jpg"
+    },
+    {
+        nombre: "Telinfor",
+        logo: "img/logos/telinfor.jpg"
+    },
+    {
+        nombre: "Cañón",
+        logo: "img/logos/cañon.webp"
+    },
+    {
+        nombre: "Kernium",
+        logo: "img/logos/kernium.jpg"
+    },
+    {
+        nombre: "Automata SRL",
+        logo: "img/logos/automata.jpg"
+    }
+];
+const brandsGrid = document.querySelector(".brands-grid");
+[...empresas, ...empresas].forEach((empresa) => {
+
+    const brandItem = document.createElement("div");
+
+    brandItem.classList.add("brand-item");
+const img = document.createElement("img");
+
+img.src = empresa.logo;
+img.alt = empresa.nombre;
+
+brandItem.appendChild(img);
+
+brandsGrid.appendChild(brandItem);
+});
+
 const track = document.querySelector(".carousel-track");
 const cards = document.querySelectorAll(".vehicle-card");
 
