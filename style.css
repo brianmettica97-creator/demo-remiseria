@@ -110,12 +110,17 @@ a {
 .logo {
     display: flex;
     align-items: center;
-    gap: 9px;
-
+    gap: 10px;
     font-size: 18px;
     font-weight: 800;
-
     color: var(--primary);
+}
+
+.logo img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    display: block;
 }
 
 .logo-icon {
@@ -2171,28 +2176,14 @@ a {
         margin: 45px 0 25px;
     }
 
-
     .brands-grid {
-        
-        display: flex;
-
-        overflow-x: auto;
-
-        gap: 15px;
-
-        padding:
-            10px 5px 20px;
-
-        scrollbar-width: none;
-        animation: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: max-content;
+    padding: 10px 5px 20px;
+    animation: brandsScroll 30s linear infinite;
     }
-
-
-    .brands-grid::-webkit-scrollbar {
-
-        display: none;
-    }
-
 
     .brand-item {
 
@@ -2219,6 +2210,501 @@ a {
         font-size: 10px;
 
         line-height: 1.6;
+    }
+
+}
+
+/* =========================
+CHOFERES Y FLOTA
+========================= */
+
+/* =========================
+   SUMATE A NUESTRA RED
+========================= */
+
+.drivers-fleet {
+    position: relative;
+    background: #f5f7f9;
+    overflow: hidden;
+}
+
+.drivers-fleet::before {
+    content: "";
+    position: absolute;
+    top: -180px;
+    left: -180px;
+    width: 420px;
+    height: 420px;
+    background: rgba(245, 184, 0, 0.08);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.drivers-fleet::after {
+    content: "";
+    position: absolute;
+    bottom: -220px;
+    right: -180px;
+    width: 480px;
+    height: 480px;
+    background: rgba(23, 105, 170, 0.06);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.driver-fleet-number {
+    position: absolute;
+    top: 22px;
+    right: 24px;
+    z-index: 4;
+
+    padding: 8px 12px;
+
+    background: rgba(11, 31, 51, 0.88);
+    color: #ffffff;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+
+    backdrop-filter: blur(8px);
+}
+
+/* =========================
+   ENCABEZADO
+========================= */
+
+.drivers-fleet .section-heading {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+    margin: 0 auto 55px;
+}
+
+.drivers-fleet .section-heading h2 {
+    color: var(--primary);
+}
+
+.drivers-fleet .section-heading p {
+    max-width: 650px;
+}
+
+
+/* =========================
+   GRID
+========================= */
+
+.drivers-fleet-grid {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 30px;
+
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+
+/* =========================
+   TARJETAS
+========================= */
+
+.driver-fleet-card {
+    position: relative;
+
+    background: #ffffff;
+
+    border: 1px solid rgba(11, 31, 51, 0.08);
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 60px rgba(11, 31, 51, 0.08);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.driver-fleet-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--secondary);
+    z-index: 3;
+}
+
+.driver-fleet-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 30px 80px rgba(11, 31, 51, 0.14);
+}
+
+.driver-fleet-card {
+    animation: fleetCardReveal 0.8s ease both;
+}
+
+.driver-fleet-card:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+@keyframes fleetCardReveal {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   IMAGEN
+========================= */
+
+.driver-fleet-image {
+    position: relative;
+
+    height: 280px;
+
+    overflow: hidden;
+
+    background: var(--primary);
+}
+
+.driver-fleet-image::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(11, 31, 51, 0.75),
+            rgba(11, 31, 51, 0.05) 70%
+        );
+
+    pointer-events: none;
+}
+
+.driver-fleet-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        transform 0.6s ease;
+}
+
+.driver-fleet-card:hover
+.driver-fleet-image img {
+    transform: scale(1.05);
+}
+
+
+/* =========================
+   BADGE
+========================= */
+
+.driver-fleet-badge {
+    position: absolute;
+
+    left: 24px;
+    bottom: 22px;
+
+    z-index: 2;
+
+    display: inline-flex;
+    align-items: center;
+
+    padding: 9px 14px;
+
+    background: var(--secondary);
+
+    color: var(--primary);
+
+    border-radius: 999px;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+.vehicle-badge {
+    background: #ffffff;
+    color: var(--primary);
+    z-index: 10;
+    display: inline-flex;
+    visibility: visible;
+    opacity: 1;
+}
+
+/* =========================
+   CONTENIDO
+========================= */
+
+.driver-fleet-content {
+    padding: 32px 34px 36px;
+    position: relative;
+    z-index: 5;
+}
+
+.driver-fleet-label {
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    color: var(--primary-light);
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+}
+
+.driver-fleet-content h3 {
+    margin: 0 0 14px;
+
+    color: var(--primary);
+
+    font-size: 30px;
+    line-height: 1.15;
+
+    letter-spacing: -0.8px;
+}
+
+.driver-fleet-content p {
+    margin: 0 0 25px;
+
+    color: var(--text-light);
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   CARACTERÍSTICAS
+========================= */
+
+.driver-fleet-features {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-bottom: 30px;
+}
+
+.driver-fleet-feature {
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 12px 14px;
+
+    background: #f8fafc;
+
+    border: 1px solid #edf1f5;
+
+    border-radius: 14px;
+}
+
+.feature-icon {
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ffffff;
+
+    border-radius: 11px;
+
+    font-size: 19px;
+
+    box-shadow:
+        0 5px 15px rgba(11, 31, 51, 0.06);
+}
+
+.driver-fleet-feature strong {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: var(--primary);
+
+    font-size: 14px;
+}
+
+.driver-fleet-feature small {
+    display: block;
+
+    color: var(--text-light);
+
+    font-size: 12px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================
+   DESTACADO 2017+
+========================= */
+
+.fleet-year {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin: 5px 0 22px;
+    padding: 14px 18px;
+    background:
+        linear-gradient(
+            135deg,
+            #fff8d6,
+            #fffdf2
+        );
+    border: 1px solid rgba(245, 184, 0, 0.25);
+    border-radius: 16px;
+}
+
+.fleet-year {
+    position: relative;
+    overflow: hidden;
+}
+
+.fleet-year::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--secondary);
+}
+
+.fleet-year strong {
+    color: var(--primary);
+    font-size: 38px;
+    line-height: 1;
+    letter-spacing: -1.5px;
+    font-weight: 900;
+}
+
+.fleet-year span {
+    color: #7a6500;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.2px;
+}
+
+
+/* =========================
+   BOTÓN
+========================= */
+
+.driver-fleet-card .btn {
+    width: 100%;
+
+    text-align: center;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 950px) {
+
+    .drivers-fleet-grid {
+        grid-template-columns: 1fr;
+
+        max-width: 650px;
+    }
+
+    .driver-fleet-image {
+        height: 300px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .drivers-fleet {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+
+    .drivers-fleet .section-heading {
+        margin-bottom: 38px;
+    }
+
+    .drivers-fleet-grid {
+        gap: 22px;
+    }
+
+    .driver-fleet-image {
+        height: 235px;
+    }
+
+    .driver-fleet-content {
+        padding: 26px 22px 28px;
+    }
+
+    .driver-fleet-content h3 {
+        font-size: 25px;
+    }
+
+    .driver-fleet-feature {
+        padding: 11px 12px;
+    }
+
+    .fleet-year strong {
+        font-size: 27px;
+    }
+
+}
+
+
+@media (max-width: 400px) {
+
+    .driver-fleet-image {
+        height: 210px;
+    }
+
+    .driver-fleet-content h3 {
+        font-size: 23px;
+    }
+
+    .driver-fleet-feature small {
+        font-size: 11px;
     }
 
 }
