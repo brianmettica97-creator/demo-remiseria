@@ -16,6 +16,7 @@
     >
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="vivo.css">
 </head>
 
 <body>
@@ -38,6 +39,7 @@
                 <a href="#vehiculos">Vehículos</a>
                 <a href="#servicios">Servicios</a>
                 <a href="#como-funciona">Cómo funciona</a>
+                <a href="#en-vivo">En vivo</a>
                 <a href="#contacto">Contacto</a>
             </nav>
 
@@ -873,6 +875,164 @@
     </div>
 
 </section>
+
+
+
+        <!-- =========================
+             TU REMÍS EN VIVO
+        ========================= -->
+
+        <section class="vivo-section section" id="en-vivo">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">
+                            ASÍ FUNCIONA EN EL LOCAL
+                        </span>
+
+                        <h2>
+                            Tu remís, en vivo
+                        </h2>
+                    </div>
+
+                    <p>
+                        Entrás, te sacás un café de la máquina,
+                        pedís en la ventanilla y el operador te asigna
+                        el chofer más cercano. Mirá cómo pasa, o probalo vos.
+                    </p>
+
+                </div>
+
+
+                <div class="vivo-grid">
+
+                    <div class="vivo-stage">
+
+                        <canvas
+                            id="vivo-canvas"
+                            role="img"
+                            aria-label="Simulación del local de Madero Remises: sala de espera con sillas de colores, máquina de café, ventanilla del operador y la calle donde llegan los remises."
+                        ></canvas>
+
+                        <div class="vivo-hud">
+                            <span class="vivo-pill vivo-live"><i></i>EN VIVO</span>
+                            <span class="vivo-pill">Viajes <b id="vivo-viajes">0</b></span>
+                            <span class="vivo-pill">Cafés <b id="vivo-cafes">0</b></span>
+                            <span class="vivo-pill">Móviles libres <b id="vivo-libres">0</b></span>
+                        </div>
+
+                        <div class="vivo-controls">
+                            <button class="vivo-btn" id="vivo-pause" type="button" aria-pressed="false">Pausa</button>
+                            <button class="vivo-btn" id="vivo-speed" type="button" aria-pressed="false">Velocidad x2</button>
+                            <button class="vivo-btn" id="vivo-cam" type="button" aria-pressed="true">Cámara automática</button>
+                        </div>
+
+                    </div>
+
+
+                    <div class="vivo-side">
+
+                        <div class="vivo-card" id="vivo-choose">
+
+                            <h3>Probalo vos</h3>
+
+                            <p class="vivo-sub">
+                                Elegí a dónde vas y entrá al local como un pasajero más.
+                            </p>
+
+                            <span class="vivo-label">¿A dónde vas?</span>
+
+                            <div class="vivo-chips" data-group="dest">
+                                <button class="vivo-chip" type="button" data-v="eze" aria-pressed="true">✈ Ezeiza</button>
+                                <button class="vivo-chip" type="button" data-v="aep" aria-pressed="false">✈ Aeroparque</button>
+                                <button class="vivo-chip" type="button" data-v="cap" aria-pressed="false">🏙 Capital</button>
+                                <button class="vivo-chip" type="button" data-v="tren" aria-pressed="false">🚆 Estación de tren</button>
+                                <button class="vivo-chip" type="button" data-v="cli" aria-pressed="false">🏥 Clínica</button>
+                                <button class="vivo-chip" type="button" data-v="casa" aria-pressed="false">🏠 A casa</button>
+                            </div>
+
+                            <span class="vivo-label">Vehículo</span>
+
+                            <div class="vivo-chips" data-group="type">
+                                <button class="vivo-chip" type="button" data-v="sedan" aria-pressed="true">Auto · Onix, Virtus, Cruze</button>
+                                <button class="vivo-chip" type="button" data-v="familiar" aria-pressed="false">Familiar · Spin</button>
+                                <button class="vivo-chip" type="button" data-v="utilitario" aria-pressed="false">Utilitario · Kangoo</button>
+                            </div>
+
+                            <label class="vivo-check">
+                                <input type="checkbox" id="vivo-coffee" checked>
+                                Tomar un café de la máquina ($1.000)
+                            </label>
+
+                            <button class="btn btn-primary vivo-go" id="vivo-go" type="button">
+                                Entrar al local
+                            </button>
+
+                        </div>
+
+
+                        <div class="vivo-card" id="vivo-status" hidden aria-live="polite">
+
+                            <h3 id="vivo-status-title">Tu viaje</h3>
+
+                            <ul class="vivo-steps" id="vivo-steps"></ul>
+
+                            <div class="vivo-end" id="vivo-end" hidden>
+                                <strong>¡Así de simple!</strong>
+                                <p>
+                                    Y si no podés acercarte al local, pedí tu remís
+                                    por WhatsApp o cotizá tu viaje online.
+                                </p>
+                                <div class="vivo-end-btns">
+                                    <a class="btn btn-primary" href="https://wa.me/5491135571382" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+                                    <a class="btn btn-outline" href="#cotizacion">Cotizar online</a>
+                                    <button class="vivo-btn" id="vivo-again" type="button">Volver a probar</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="vivo-card">
+
+                            <h3>Pantalla de la central</h3>
+
+                            <p class="vivo-sub" id="vivo-map-note">
+                                El operador ve todos los móviles y asigna el más cercano a la base.
+                            </p>
+
+                            <div class="vivo-map-wrap">
+                                <canvas
+                                    id="vivo-map"
+                                    role="img"
+                                    aria-label="Mapa de la central con los móviles libres, asignados y en viaje alrededor de la base."
+                                ></canvas>
+                            </div>
+
+                            <div class="vivo-legend">
+                                <span><i style="background:#2FA36B"></i>Libre</span>
+                                <span><i style="background:#F5B800"></i>Asignado</span>
+                                <span><i style="background:#8A97A6"></i>En viaje</span>
+                            </div>
+
+                            <ul class="vivo-feed" id="vivo-feed" aria-live="off"></ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <p class="vivo-note">
+                    Simulación ilustrativa: los móviles, choferes y tiempos son de ejemplo.
+                </p>
+
+            </div>
+
+        </section>
 
 
         <!-- =========================
@@ -1877,6 +2037,7 @@
 
 
     <script src="script.js"></script>
+    <script src="vivo.js"></script>
 
 </body>
 

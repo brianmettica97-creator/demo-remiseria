@@ -1,0 +1,389 @@
+/* =========================
+   TU REMÍS EN VIVO
+========================= */
+
+.vivo-section {
+    background: var(--background-soft);
+}
+
+.vivo-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.vivo-stage {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: #16293d;
+    box-shadow: var(--shadow);
+}
+
+.vivo-stage canvas {
+    display: block;
+    width: 100%;
+}
+
+.vivo-hud {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    pointer-events: none;
+}
+
+.vivo-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 11px;
+    border-radius: 999px;
+    background: rgba(11, 31, 51, 0.84);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    backdrop-filter: blur(6px);
+}
+
+.vivo-pill b {
+    color: var(--secondary);
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+}
+
+.vivo-live {
+    background: #d2433f;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+}
+
+.vivo-live i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #fff;
+    animation: vivoBlink 1.4s infinite;
+}
+
+.vivo-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px;
+    background: #fff;
+    border-top: 1px solid var(--border);
+}
+
+.vivo-btn,
+.vivo-chip {
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--primary);
+    font: 600 13px "Inter", sans-serif;
+    padding: 9px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.vivo-btn:hover,
+.vivo-chip:hover {
+    border-color: var(--primary-light);
+}
+
+.vivo-btn[aria-pressed="true"] {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+}
+
+.vivo-chip[aria-pressed="true"] {
+    background: var(--primary-light);
+    border-color: var(--primary-light);
+    color: #fff;
+}
+
+.vivo-btn:focus-visible,
+.vivo-chip:focus-visible {
+    outline: 3px solid rgba(23, 105, 170, 0.35);
+    outline-offset: 2px;
+}
+
+.vivo-side {
+    display: grid;
+    gap: 18px;
+}
+
+.vivo-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px;
+    box-shadow: var(--shadow);
+}
+
+.vivo-card h3 {
+    color: var(--primary);
+    font-size: 20px;
+    letter-spacing: -0.4px;
+    margin-bottom: 4px;
+}
+
+.vivo-card .vivo-sub {
+    color: var(--text-light);
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.vivo-label {
+    display: block;
+    margin: 16px 0 8px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    color: var(--text-light);
+    text-transform: uppercase;
+}
+
+.vivo-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.vivo-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: var(--light-blue);
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.vivo-check input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary-light);
+}
+
+.vivo-go {
+    width: 100%;
+    margin-top: 16px;
+}
+
+.vivo-steps {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.vivo-steps li {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 10px;
+    align-items: start;
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.vivo-steps li::before {
+    content: "";
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: #fff;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.vivo-steps li.active {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.vivo-steps li.active::before {
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 4px rgba(245, 184, 0, 0.22);
+    animation: vivoPulse 1.3s infinite;
+}
+
+.vivo-steps li.done {
+    color: var(--primary);
+}
+
+.vivo-steps li.done::before {
+    content: "✓";
+    border-color: #2fa36b;
+    background: #2fa36b;
+}
+
+.vivo-steps li.skip {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.vivo-steps small {
+    display: block;
+    color: var(--text-light);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.vivo-steps small:empty {
+    display: none;
+}
+
+.vivo-end {
+    margin-top: 18px;
+    padding: 18px;
+    border-radius: 14px;
+    background: var(--primary);
+    color: #fff;
+}
+
+.vivo-end strong {
+    font-size: 17px;
+}
+
+.vivo-end p {
+    margin: 6px 0 14px;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 14px;
+}
+
+.vivo-end-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.vivo-end-btns .btn {
+    min-height: 44px;
+    padding: 0 18px;
+}
+
+.vivo-end .vivo-btn {
+    background: transparent;
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.45);
+}
+
+.vivo-map-wrap {
+    margin-top: 12px;
+}
+
+.vivo-map-wrap canvas {
+    display: block;
+    width: 100%;
+    border-radius: 12px;
+}
+
+.vivo-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+.vivo-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.vivo-legend i {
+    width: 12px;
+    height: 8px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.vivo-feed {
+    list-style: none;
+    display: grid;
+    gap: 7px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text);
+}
+
+.vivo-feed li {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 6px;
+    animation: vivoIn 0.4s ease;
+}
+
+.vivo-feed time {
+    color: var(--text-light);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.vivo-note {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+@keyframes vivoPulse {
+    50% { box-shadow: 0 0 0 7px rgba(245, 184, 0, 0.08); }
+}
+
+@keyframes vivoBlink {
+    50% { opacity: 0.25; }
+}
+
+@keyframes vivoIn {
+    from { opacity: 0; transform: translateY(-4px); }
+}
+
+@media (max-width: 950px) {
+    .vivo-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .vivo-card {
+        padding: 18px;
+    }
+
+    .vivo-pill {
+        font-size: 11px;
+        padding: 5px 9px;
+    }
+
+    .vivo-controls .vivo-btn {
+        flex: 1 1 auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .vivo-steps li.active::before,
+    .vivo-live i,
+    .vivo-feed li {
+        animation: none;
+    }
+}
